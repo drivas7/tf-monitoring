@@ -63,7 +63,7 @@ The project is organized as follows:
 
 ### A Simple Diagram:
 
-![Architecture Diagram](https://www.google.com/url?sa=i&url=https%3A%2F%2Fkomodor.com%2Fblog%2Fsetting-up-prometheus-and-grafana-for-monitoring-your-microservices%2F&psig=AOvVaw2V7HFrHOoUgvJJP8KQeSvo&ust=1711309181129000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwi-4YDQkYuFAxX1-gIHHeUCBzoQjRx6BAgAEBY
+![Architecture Diagram](./screenshot-prometheus.png
  "A Simple Diagram")
 
 
