@@ -3,20 +3,17 @@
  <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">TF Monitoring</h3>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> A simple Terraform Monitoring template.
     <br> 
 </p>
 
@@ -24,91 +21,98 @@
 
 - [About](#about)
 - [Getting Started](#getting_started)
-- [Deployment](#deployment)
-- [Usage](#usage)
-- [Built Using](#built_using)
-- [TODO](../TODO.md)
-- [Contributing](../CONTRIBUTING.md)
-- [Authors](#authors)
-- [Acknowledgments](#acknowledgement)
+- [Installation](#install)
+- [How to Test](#test)
+- [Warning](#warning)
+
+
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
-
-## 🏁 Getting Started <a name = "getting_started"></a>
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
+The prompt(s) that started this project were the following: 
 
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
+1. How would you structure your Terraform project if you have multiple environments
+and use different cloud providers?
+2. Write a Terraform script with the below requirements:
+    ● Creates a ubuntu aws ec2-instance
+    ● Install ansible
+    ● Execute an ansible playbook
+3. If you have multiple Ubuntu prod instances, How would you monitor them? What would be your monitoring strategy?
 
 ```
-until finished
-```
 
-End with an example of getting some data out of the system or using it for a little demo.
+Therefore, this repository contains Terraform configurations to deploy a monitoring infrastructure using Prometheus and Grafana on cloud providers such as AWS and GCP.
 
-## 🔧 Running the tests <a name = "tests"></a>
+# 🏁 Getting Started <a name = "getting_started"></a>
 
-Explain how to run the automated tests for this system.
+An overview of the project could be the following:
 
-### Break down into end to end tests
+## Organization
 
-Explain what these tests test and why
+The project is organized as follows:
 
-```
-Give an example
-```
+- **environments**: Contains environment-specific Terraform configurations.
+  - **dev**: Configuration for the development environment.
+  - **prod**: Configuration for the production environment.
+- **modules**: Contains reusable Terraform modules.
+  - **aws**: Module for provisioning resources on AWS.
+  - **gcp**: Module for provisioning resources on GCP.
+  - **monitoring**: Module for deploying the monitoring infrastructure.
+  - **ansible**: Contains Ansible playbooks and configurations for setting up Prometheus and Grafana.
 
-### And coding style tests
+### A Simple Diagram:
 
-Explain what these tests test and why
+![Architecture Diagram](https://www.google.com/url?sa=i&url=https%3A%2F%2Fkomodor.com%2Fblog%2Fsetting-up-prometheus-and-grafana-for-monitoring-your-microservices%2F&psig=AOvVaw2V7HFrHOoUgvJJP8KQeSvo&ust=1711309181129000&source=images&cd=vfe&opi=89978449&ved=2ahUKEwi-4YDQkYuFAxX1-gIHHeUCBzoQjRx6BAgAEBY
+ "A Simple Diagram")
 
-```
-Give an example
-```
 
-## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+# 🔧 Instalation <a name = "install"></a>
 
-## 🚀 Deployment <a name = "deployment"></a>
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
-Add additional notes about how to deploy this on a live system.
+1. **Clone the Repository**: Clone this repository to your local machine.
+   
+   - Open a terminal window.
+   - Run the following command to clone the repository:
+   
+     ```
+     git clone https://github.com/your-username/terraform-monitoring.git
+     ```
 
-## ⛏️ Built Using <a name = "built_using"></a>
+2. **Install Terraform**: If you haven't already, install Terraform on your local machine. You can download Terraform from the [official website](https://www.terraform.io/downloads.html) or use a package manager.
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+3. **Install Ansible**: If you haven't already, install Ansible on your local machine. You can install Ansible using a package manager or by following the instructions on the [official website](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
-## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+# 🚀 How to Test (AWS) <a name = "test"></a>
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+1. **Set up your AWS credentials**: Set up your AWS Access Key and Secret Key using the following command:
+    ```
+    aws --configure
+    ```
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+4. **Initialize Terraform**: Navigate to the `environments` directory corresponding to the environment you want to deploy (e.g., `environments/dev` or `environments/prod`) and run the following command to initialize Terraform:
+    ```
+    terraform init
+    ```
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+4. **Review Configuration**: Review the Terraform configuration files (`main.tf`, `variables.tf`, etc.) in the chosen environment directory to ensure they match your requirements.
+
+5. **Run Terraform Plan**: Run the following command to preview the changes Terraform will make to your infrastructure:
+    ```
+    terraform plan
+    ```
+
+6. **Apply Changes**: If the plan looks good, run the following command to apply the changes and deploy the monitoring infrastructure:
+    ```
+    terraform apply
+    ```
+
+7. **Verify Deployment**: Once the deployment is complete, verify that Prometheus and Grafana are accessible using the provided URLs.
+
+
+# ⚠️ Warning
+
+The deployment on GCP has not been tested thoroughly and may not work as expected. Use it at your own risk. This project has only been tested on AWS.
